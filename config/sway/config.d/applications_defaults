@@ -1,0 +1,61 @@
+# start up applications
+exec_always --no-startup-id blueman-applet
+exec /usr/lib/polkit-gnome/polkit-gnome-authenticaiton-agen-1 &
+
+# set floating (nontiling) for special apps:
+for_window [app_id="pavucontrol" ] floating enable, resize set width 40 ppt height 30 ppt
+for_window [class="Lxappearance"] floating enable, resize set width 60 ppt height 50 ppt
+
+# set floating for window roles
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+for_window [window_role="About"] floating enable
+for_window [title="File Operation Progress"] floating enable, border pixel 1, sticky enable, resize set width 40 ppt height 30 ppt
+for_window [title="Save File"] floating enable
+for_window [title="nmtui"] floating enable, move position center
+for_window [app_id="blueberry.py"] floating enable, move position center
+for_window [app_id="org.gnome.Calendar"] floating enable, move position center
+
+# Inhibit idle
+for_window [class=".*"] inhibit_idle fullscreen
+for_window [app_id=".*"] inhibit_idle fullscreen
+
+# Title format for windows
+for_window [shell="xdg_shell"] title_format "%title (%app_id)"
+for_window [shell="x_wayland"] title_format "%class - %title"
+
+# Opacity for windows
+for_window [app_id="thunar"] opacity 0.9
+for_window [app_id="firefox"] opacity 0.9
+for_window [class="discord"] opacity 0.9
+for_window [class="Spotify"] opacity 0.9
+for_window [app_id="filezilla"] opacity 0.9
+for_window [title="wofi"] opacity 0.9
+
+# Font for the system
+font pango: sourceCodePro Medium 12
+
+# Gaps
+gaps inner 3px
+gaps outer 3px
+
+# Borders
+# Hide title bar on windows
+default_border pixel 5
+
+# Thin borders
+smart_borders on
+smart_gaps off
+
+## Window decoration
+#class                  border    backgr    text      indicator child_border
+client.focused          #333845   #333845   #ffffff   #2e9ef4   #8fbcbb
+client.focused_inactive #333333   #5f676a   #ffffff   #484e50   #5f676a
+client.unfocused        #2f343a   #222222   #888888   #333845   #333845
+client.urgent           #2f343a   #900000   #ffffff   #900000   #900000
+client.placeholder      #000000   #0c0c0c   #ffffff   #000000   #333845
+client.background       #ffffff

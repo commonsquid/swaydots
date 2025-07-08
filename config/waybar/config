@@ -1,0 +1,79 @@
+{
+  "margin-top": 5,
+  "margin-left": 10,
+  "margin-right": 10,
+  "height": 30,
+
+  "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
+  "modules-center": ["clock"],
+  "modules-right": ["battery", "network", "bluetooth", "pulseaudio", "tray", "custom/power"],
+
+  "sway/workspaces": {
+    "format-icons": {
+      "focused": "●",
+      "default": "○"
+    },
+    "spacing": 2,
+    "padding": 2,
+    "margin": 0
+  },
+
+  "sway/mode": {
+    "format": "<span style=\"italic\">{}</span>"
+  },
+
+  "tray": {
+    "spacing": 10
+  },
+
+  "clock": {
+    "format": "[ {:%a | %d %b | %I %M %p} ]",
+    "on-click": "gnome-calendar"
+  },
+
+  "battery": {
+    "format": "[ {capacity}% {icon} ]",
+    "format-charging": "{capacity}% ",
+    "format-plugged": "{capacity}% ",
+    "format-icons": ["", "", "", "", ""]
+  },
+
+  "custom/power": {
+    "format": " ",
+    "tooltip": false,
+    "on-click": "~/.config/waybar/scripts/power_menu.sh"
+  },
+
+  "bluetooth": {
+    "format": "[ <span color=\"#ffffff\"></span> ]",
+    "format-off": "<span color=\"#ffffff\"></span>",
+    "on-click": "blueberry"
+  },
+
+  "network": {
+    "format-wifi": "[ {essid} ({signalStrength}%)   ]",
+    "format-ethernet": "{ifname}: ",
+    "format-disconnected": "Disconnected ⚠",
+    "on-click": "alacritty --title nmtui -e 'nmtui'"
+  },
+
+  "pulseaudio": {
+    "format": "[ {volume}% {icon} {format_source} ]",
+    "format-bluetooth": "{volume}% {icon} {format_source}",
+    "format-bluetooth-muted": " {icon} {format_source}",
+    "format-muted": " {format_source}",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""]
+    },
+    "on-click": "pavucontrol"
+  }
+}
+
